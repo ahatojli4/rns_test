@@ -1,10 +1,9 @@
 <?php
 use Service\Container;
 
-require_once __DIR__ . '/bootstrap.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
-
-/** @var Container $container */
+$container = new Container(Config::CONFIGURATION);
 $dataGetter = $container->getDataGetter();
 
 //<editor-fold desc="Этот блок можно закэшировать">

@@ -1,10 +1,10 @@
 <?php
 use Service\Container;
 
-require_once __DIR__ . '/bootstrap.php';
+require_once __DIR__ . '/vendor/autoload.php';
 $qualificationFilter = (!empty($_POST['qualification'])) ? $_POST['qualification'] : [];
 $citiesFilter = (!empty($_POST['cities'])) ? $_POST['cities'] : [];
-/** @var Container $container */
+$container = new Container(Config::CONFIGURATION);
 $dataGetter = $container->getDataGetter();
 $users = $dataGetter->getUsers($qualificationFilter, $citiesFilter);
 ?>
