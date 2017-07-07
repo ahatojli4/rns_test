@@ -13,7 +13,7 @@ $(document).ready(function () {
 			success: function (data) {
 				var $data = $(data);
 
-				$('.js-table').replaceWith($data.find('.js-table'));
+				$('.js-table').replaceWith($data);
 			}
 		});
 	});
@@ -31,7 +31,7 @@ $(document).ready(function () {
 			success: function (data) {
 				var $data = $(data);
 
-				$('.js-table').replaceWith($data.find('.js-table'));
+				$('.js-table').replaceWith($data);
 			}
 		});
 	});

@@ -1,7 +1,12 @@
 <?php
+use Service\Container;
+
+require_once __DIR__ . '/bootstrap.php';
 $qualificationFilter = (!empty($_POST['qualification'])) ? $_POST['qualification'] : [];
 $citiesFilter = (!empty($_POST['cities'])) ? $_POST['cities'] : [];
-$users =$dataGetter->getUsers($qualificationFilter, $citiesFilter);
+/** @var Container $container */
+$dataGetter = $container->getDataGetter();
+$users = $dataGetter->getUsers($qualificationFilter, $citiesFilter);
 ?>
 
 <table class="js-table">

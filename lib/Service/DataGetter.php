@@ -25,7 +25,7 @@ class DataGetter
 	 * UserGetter constructor.
 	 * @param $storage
 	 */
-	public function __construct($storage)
+	public function __construct(PdoStorage $storage)
 	{
 		$this->storage = $storage;
 	}
@@ -68,7 +68,6 @@ class DataGetter
 	 */
 	public function getUsers(array $qualificationFilter = [], array $cityFilter = []): array
 	{
-
 		$usersArray = $this->storage->fetchUsers($qualificationFilter, $cityFilter);
 		$result = [];
 		foreach ($usersArray as $row) {

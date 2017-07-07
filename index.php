@@ -1,11 +1,10 @@
 <?php
 use Service\Container;
 
-require_once __DIR__ . '/improvised_loader.php';
+require_once __DIR__ . '/bootstrap.php';
 
-global $configuration;
 
-$container = new Container($configuration);
+/** @var Container $container */
 $dataGetter = $container->getDataGetter();
 
 //<editor-fold desc="Этот блок можно закэшировать">
@@ -40,7 +39,7 @@ $users =$dataGetter->getUsers($qualificationFilter, $citiesFilter);
 	</header>
 	<div>
 		<div class="grid-container grid-container-padded">
-			<form method="POST" action="/" class="js-form">
+			<form method="POST" action="/users.php" class="js-form">
 				<h2>Форма</h2>
 				<div class="grid-x grid-margin-x">
 					<div class="small-6 cell">
