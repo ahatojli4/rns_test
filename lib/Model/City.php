@@ -14,13 +14,14 @@ class City
 	private $id;
 	private $name;
 
-	public function setId(int $id)
+	/**
+	 * City constructor.
+	 * @param int $id
+	 * @param string $name
+	 */
+	public function __construct(int $id, string $name)
 	{
 		$this->id = $id;
-	}
-
-	public function setName(string $name)
-	{
 		$this->name = $name;
 	}
 

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Denis
- * Date: 06.07.17
- * Time: 22:23
- */
 
 namespace Service;
 
@@ -55,7 +49,7 @@ class PdoStorage
 	public function fetchUsers(array $qualificationFilter = [], array $cityFilter = []): array
 	{
 		$statement = $this->pdo->prepare($this->getUsersQueryString($qualificationFilter, $cityFilter));
-		$statement->execute(array_merge($qualificationFilter,$cityFilter));
+		$statement->execute(array_merge($qualificationFilter, $cityFilter));
 
 		return $statement->fetchAll(\PDO::FETCH_ASSOC);
 	}
@@ -67,8 +61,6 @@ class PdoStorage
 	 */
 	private function getUsersQueryString(array $qualificationFilter = [], array $cityFilter = []): string
 	{
-//		<editor-fold desc="Неоптимизированный запрос, можно подумать над тем, как его оптимизировать">
-//		также не выбирутся результаты, если в бд у пользователя не будет связи с квалификацией или городом
 		$query = <<<'SQL'
 SELECT
 	qualifications.id AS qualification_id,
@@ -85,7 +77,6 @@ FROM users
 	INNER JOIN qualifications
 		ON users.qualifiacation_id = qualifications.id
 SQL;
-		//</editor-fold>
 
 		$whereStatement = '';
 		if (!empty($qualificationFilter) || !empty($cityFilter)) {

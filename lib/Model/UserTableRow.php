@@ -11,6 +11,17 @@ class UserTableRow extends User
 	private $userCities;
 	private $qualification;
 
+	/**
+	 * UserTableRow constructor.
+	 * @param int $id
+	 * @param string $name
+	 */
+	public function __construct(int $id, string $name)
+	{
+		parent::__construct($id, $name);
+	}
+
+
 	public function addUserCity(string $userCities)
 	{
 		$this->userCities[] = $userCities;
@@ -24,7 +35,7 @@ class UserTableRow extends User
 	/**
 	 * @return string
 	 */
-	public function getUserCities(): string
+	public function getUserCitiesString(): string
 	{
 		return implode(', ', $this->userCities);
 	}

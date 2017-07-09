@@ -23,7 +23,7 @@ $users = $dataGetter->getUsers($qualificationFilter, $citiesFilter);
 		<tr>
 			<td><?php echo $user->getName(); ?></td>
 			<td><?php echo $user->getQualification(); ?></td>
-			<td><?php echo $user->getUserCities(); ?></td>
+			<td><?php echo $user->getUserCitiesString(); ?></td>
 		</tr>
 	<?php endforeach; ?>
 	</tbody>

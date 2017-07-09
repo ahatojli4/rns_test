@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Denis
- * Date: 05.07.17
- * Time: 22:11
- */
 
 namespace Model;
 
@@ -14,13 +8,14 @@ class Qualification
 	private $id;
 	private $name;
 
-	public function setId(int $id)
+	/**
+	 * Qualification constructor.
+	 * @param int $id
+	 * @param string $name
+	 */
+	public function __construct(int $id, string $name)
 	{
 		$this->id = $id;
-	}
-
-	public function setName(string $name)
-	{
 		$this->name = $name;
 	}
 

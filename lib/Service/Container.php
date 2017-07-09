@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Denis
- * Date: 05.07.17
- * Time: 21:59
- */
 
 namespace Service;
 

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Denis
- * Date: 05.07.17
- * Time: 22:13
- */
 
 namespace Service;
 
@@ -74,9 +68,7 @@ class DataGetter
 			if (array_key_exists($row['user_id'], $result)) {
 				$result[$row['user_id']]->addUserCity($row['city_name']);
 			} else {
-				$user = new UserTableRow();
-				$user->setId($row['user_id']);
-				$user->setName($row['user_name']);
+				$user = new UserTableRow($row['user_id'], $row['user_name']);
 				$user->setQualification($row['qualification_name']);
 				$user->addUserCity($row['city_name']);
 				$result[$row['user_id']] = $user;
@@ -92,9 +84,7 @@ class DataGetter
 	 */
 	private function getQualificationObj(array $row): Qualification
 	{
-		$qualification = new Qualification();
-		$qualification->setId($row['id']);
-		$qualification->setName($row['name']);
+		$qualification = new Qualification($row['id'], $row['name']);
 		return $qualification;
 	}
 
@@ -104,9 +94,7 @@ class DataGetter
 	 */
 	private function getCityObj($row): City
 	{
-		$city = new City();
-		$city->setId($row['id']);
-		$city->setName($row['name']);
+		$city = new City($row['id'], $row['name']);
 		return $city;
 	}
 

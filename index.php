@@ -13,7 +13,7 @@ $cities = $dataGetter->getAllCities();
 
 $qualificationFilter = (!empty($_POST['qualification'])) ? $_POST['qualification'] : [];
 $citiesFilter = (!empty($_POST['cities'])) ? $_POST['cities'] : [];
-$users =$dataGetter->getUsers($qualificationFilter, $citiesFilter);
+$users = $dataGetter->getUsers($qualificationFilter, $citiesFilter);
 
 ?>
 
@@ -46,7 +46,7 @@ $users =$dataGetter->getUsers($qualificationFilter, $citiesFilter);
 							<span>Образование:</span>
 							<select name="qualification[]" multiple>
 								<?php foreach ($qualifications as $qualification): ?>
-									<option value="<?php echo $qualification->getId(); ?>"<?php echo in_array($qualification->getId(), $qualificationFilter) ? ' selected' : ''?>><?php echo $qualification->getName(); ?></option>
+									<option value="<?php echo $qualification->getId(); ?>"<?php echo in_array($qualification->getId(), $qualificationFilter) ? ' selected' : '' ?>><?php echo $qualification->getName(); ?></option>
 								<?php endforeach; ?>
 							</select>
 						</label>
@@ -56,7 +56,7 @@ $users =$dataGetter->getUsers($qualificationFilter, $citiesFilter);
 							<span>Город:</span>
 							<select name="cities[]" multiple>
 								<?php foreach ($cities as $city): ?>
-									<option value="<?php echo $city->getId(); ?>"<?php echo in_array($city->getId(), $citiesFilter) ? ' selected' : ''?>><?php echo $city->getName(); ?></option>
+									<option value="<?php echo $city->getId(); ?>"<?php echo in_array($city->getId(), $citiesFilter) ? ' selected' : '' ?>><?php echo $city->getName(); ?></option>
 								<?php endforeach; ?>
 							</select>
 						</label>
@@ -70,20 +70,20 @@ $users =$dataGetter->getUsers($qualificationFilter, $citiesFilter);
 			<table class="js-table">
 				<caption>Пользователи</caption>
 				<thead>
-					<tr>
-						<th>ФИО</th>
-						<th>Образование</th>
-						<th>Города</th>
-					</tr>
+				<tr>
+					<th>ФИО</th>
+					<th>Образование</th>
+					<th>Города</th>
+				</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($users as $user): ?>
-						<tr>
-							<td><?php echo $user->getName(); ?></td>
-							<td><?php echo $user->getQualification(); ?></td>
-							<td><?php echo $user->getUserCities(); ?></td>
-						</tr>
-					<?php endforeach; ?>
+				<?php foreach ($users as $user): ?>
+					<tr>
+						<td><?php echo $user->getName(); ?></td>
+						<td><?php echo $user->getQualification(); ?></td>
+						<td><?php echo $user->getUserCitiesString(); ?></td>
+					</tr>
+				<?php endforeach; ?>
 				</tbody>
 			</table>
 		</div>
