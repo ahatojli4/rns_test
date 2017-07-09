@@ -98,15 +98,10 @@ DROP TABLE IF EXISTS `users_to_cities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users_to_cities` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) unsigned DEFAULT NULL,
-  `city_id` int(11) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `city_id` (`city_id`),
-  CONSTRAINT `users_to_cities_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `users_to_cities_ibfk_2` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+  `user_id` int(11) unsigned NOT NULL,
+  `city_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`user_id`,`city_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +110,7 @@ CREATE TABLE `users_to_cities` (
 
 LOCK TABLES `users_to_cities` WRITE;
 /*!40000 ALTER TABLE `users_to_cities` DISABLE KEYS */;
-INSERT INTO `users_to_cities` VALUES (1,1,1),(2,2,2),(3,2,3),(4,3,1),(5,4,4),(6,5,5),(7,6,6),(8,7,7),(9,8,8),(10,9,3),(11,5,4),(12,5,6),(13,8,1);
+INSERT INTO `users_to_cities` VALUES (1,1),(2,2),(2,3),(3,1),(4,4),(5,4),(5,5),(5,6),(6,6),(7,7),(8,1),(8,8),(9,3);
 /*!40000 ALTER TABLE `users_to_cities` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -128,4 +123,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-07 11:29:28
+-- Dump completed on 2017-07-09 19:04:03

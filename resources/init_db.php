@@ -41,15 +41,10 @@ $pdo->exec('CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;');
 
 $pdo->exec('CREATE TABLE `users_to_cities` (
-  `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` INT(11) UNSIGNED DEFAULT NULL,
-  `city_id` INT(11) UNSIGNED DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `city_id` (`city_id`),
-  CONSTRAINT `users_to_cities_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `users_to_cities_ibfk_2` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;');
+  `user_id` int(11) unsigned NOT NULL,
+  `city_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`user_id`,`city_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;');
 
 // insert data
 
@@ -86,21 +81,21 @@ VALUES
 	(9, \'Селиверстов Сергей Мартынович\', 4);
 ');
 
-$pdo->exec('INSERT INTO `users_to_cities` (`id`, `user_id`, `city_id`)
+$pdo->exec('INSERT INTO `users_to_cities` (`user_id`, `city_id`)
 VALUES
-	(1, 1, 1),
-	(2, 2, 2),
-	(3, 2, 3),
-	(4, 3, 1),
-	(5, 4, 4),
-	(6, 5, 5),
-	(7, 6, 6),
-	(8, 7, 7),
-	(9, 8, 8),
-	(10, 9, 3),
-	(11, 5, 4),
-	(12, 5, 6),
-	(13, 8, 1);
-');
+	(1, 1),
+	(2, 2),
+	(2, 3),
+	(3, 1),
+	(4, 4),
+	(5, 4),
+	(5, 5),
+	(5, 6),
+	(6, 6),
+	(7, 7),
+	(8, 1),
+	(8, 8),
+	(9, 3);'
+);
 
 echo 'Done';
